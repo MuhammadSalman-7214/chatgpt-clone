@@ -1,0 +1,18 @@
+.rounded-search{
+    border-radius: 50px;
+    width: 60%;
+    border: 0;
+}
+.hoverTab1:hover{
+    background-color: #f9f7f7;
+    margin: 0;
+}
+.logo{
+    margin-top: 9rem;
+}
+/* Media query for small screens */
+@media (max-width: 600px) {
+    .logo{
+        margin-top: 4rem;
+    }
+  }
