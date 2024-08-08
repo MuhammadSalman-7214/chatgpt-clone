@@ -31,14 +31,18 @@ const Sidebar = ({ setActivePage, activePage, setCollapsed, collapsed }) => {
       {isSmallScreen ? (
         <>
         <div className='pt-5'>
+          <Link to="/">
           <div className='sidebar-item flex mx-4 mb-8 p-1 rounded-lg hoverTab'>
             <img src='./logo.png' style={{width:'18px'}} />
             <p className='ms-3 pt-2 text-start'>ChatGPT</p>
           </div>
+          </Link>
+          <Link to="/explore">
           <div className='sidebar-item flex mx-4 p-1 rounded-lg hoverTab'>
             <ProductFilled className='text-slate-500' />
             <p className='ms-4 pt-2 text-start'>Explore GPTs</p>
           </div>
+          </Link>
           <div className='flex absolute bottom-0 p-2 flex items-center width-full'>
             <BsStars className='text-xl mb-2' />
             <div className='text-start'>
@@ -52,17 +56,17 @@ const Sidebar = ({ setActivePage, activePage, setCollapsed, collapsed }) => {
         <>
         <div className='flex justify-between py-2 px-3'>
           <i className="fa-solid fa-table-columns p-2 text-slate-500 hoverTab rounded-lg text-lg" onClick={() => setCollapsed(!collapsed)}></i>
-          <i className="fa-solid fa-pen-to-square p-2 text-slate-500 hoverTab rounded-lg text-lg"></i>
+          <i className="fa-solid fa-pen-to-square p-2 text-slate-500 hoverTab rounded-lg text-lg"></i> 
         </div>
         <div className='mt-2'>
-          <div className='sidebar-item flex mx-3 mb-7 p-2 rounded-lg hoverTab'>
+          <Link to='/' ><div className='sidebar-item flex mx-3 mb-7 p-2 rounded-lg hoverTab'>
           <img src='./logo.png' style={{width:'18px'}} />
             <p className='ms-3 pt-2 text-start'>ChatGPT</p>
-          </div>
-          <div className='sidebar-item flex mx-4 p-2 rounded-lg hoverTab'>
+          </div></Link>
+          <Link to='/explore'><div className='sidebar-item flex mx-4 p-2 rounded-lg hoverTab'>
             <ProductFilled className='text-slate-500' />
             <p className='ms-4 pt-2 text-start'>Explore GPTs</p>
-          </div>
+          </div></Link>
           <div className='flex absolute bottom-0 p-4 flex items-center'>
             <BsStars className='text-xl mb-2' />
             <div className='text-start'>

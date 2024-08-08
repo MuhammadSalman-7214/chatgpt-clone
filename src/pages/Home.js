@@ -1,41 +1,122 @@
-import React from 'react'
-import '../style/Home.css'
-import Cards from '../components/Cards'
+import React, { useState, useEffect, useRef } from 'react';
+import '../style/Home.css';
+import Cards from '../components/Cards';
+
 const Home = () => {
+  const [query, setQuery] = useState('');
+  const [messages, setMessages] = useState([]);
+  const [responses, setResponses] = useState([]);
+  const [questions, setQuestions] = useState([]);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    // Fetch the dummy responses from the JSON file
+    const fetchResponses = async () => {
+      try {
+        const response = await fetch('/utils/responce.json'); // Adjust path if needed
+        const data = await response.json();
+        setResponses(data);
+
+        // Extract random 4 questions from the data
+        const randomQuestions = data.sort(() => 0.5 - Math.random()).slice(0, 4);
+        setQuestions(randomQuestions.map(item => item.question));
+      } catch (error) {
+        console.error('Error fetching responses:', error);
+      }
+    };
+
+    fetchResponses();
+  }, []);
+
+  useEffect(() => {
+    // Scroll to the bottom of the messages container
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  const handleSend = async () => {
+    if (!query.trim()) return;
+
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: query, isUser: true },
+    ]);
+
+    const response = responses.find(
+      (response) => response.question.toLowerCase() === query.trim().toLowerCase()
+    );
+
+    const answer = response ? response.answer : "Sorry, I don't have an answer to that question.";
+
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: answer, isUser: false },
+    ]);
+
+    setQuery('');
+  };
+
+  const handleCardClick = (question) => {
+    setQuery(question);
+    handleSend(); // Automatically send the query when a card is clicked
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent the default action (e.g., submitting a form)
+      handleSend();
+    }
+  };
+
   return (
-    <div className='grid justify-items-center'>
-        
+    <div className='grid justify-items-center w-full' style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+      {messages.length === 0 ? (
         <div className='justify-center height-full'>
-        <div className='pb-10 flex justify-center logo'>
-        <img src='./logo.png'/>
+          <div className='pb-10 flex justify-center logo'>
+            <img src='./logo.png' alt='Logo' />
+          </div>
+          <Cards questions={questions} onCardClick={handleCardClick} />
         </div>
-        <Cards/>
-        </div>
+      ) : null}
 
-        {/* SearchBar */}
-        <div className='fixed bottom-0  grid justify-items-center'>
-        <div className=" border-none bg-slate-100  flex px-5 py-3 rounded-full relative flex ">
-            <div>
-            <i class="fa-solid fa-paperclip"></i>
-            <input
-            id="query"
-            name="query"
-            type="text"
-            placeholder="Message ChatGPT"
-            className="bg-slate-100 ps-5 border-0 w-96"
-            />
-            </div>
-            <div className='bg-slate-300 rounded-full'>
-              <i class="fa-solid fa-arrow-up text-slate-100 p-1"></i>
-            </div>
+      {messages.length > 0 && (
+        <div className="flex flex-col h-[calc(100vh-185px)] max-w-4xl w-full overflow-y-auto custom-scroll">
+          <div className="flex flex-col space-y-4">
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={`p-3 rounded-lg max-w-s break-words ${message.isUser ? 'bg-gray-300 text-black self-end' : 'bg-blue-500 text-white self-start'}`}
+              >
+                {message.text}
+              </div>
+            ))}
+            <div ref={messagesEndRef} /> {/* Empty div to act as scroll target */}
+          </div>
         </div>
-        <p className="text-xs text-slate-500 py-1 ">
-            ChatGPT can make mistakes. Check important info.
-        </p>
+      )}
+
+      <div className='fixed bottom-4 w-full flex justify-center p-4'>
+        <div className='flexSearch items-center w-full max-w-xl space-x-4 p-3 bg-gray-100 rounded-full shadow'>
+          <i className='fa-solid fa-paperclip text-lg'></i>
+          <input
+            id='query'
+            name='query'
+            type='text'
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder='Message ChatGPT'
+            className='flex-grow bg-transparent border-0 focus:ring-0 outline-none'
+          />
+          <div className='flex items-center justify-center w-10 h-10 bg-slate-500 rounded-full' onClick={handleSend}>
+            <i className='fa-solid fa-arrow-up text-white'></i>
+          </div>
         </div>
+      </div>
+      <p className='fixed bottom-1 text-xs text-slate-500 py-1'>
+        ChatGPT can make mistakes. Check important info.
+      </p>
     </div>
-  )
-}
+  );
+};
 
-export default Home
-
+export default Home;
