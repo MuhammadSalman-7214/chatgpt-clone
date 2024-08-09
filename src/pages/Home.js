@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../style/home.css';
+import '../style/home-view.css';
 import Cards from '../components/Cards';
 
 const Home = () => {
