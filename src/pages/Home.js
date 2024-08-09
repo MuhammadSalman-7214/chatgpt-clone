@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../style/Home.css';
+import '../style/home.css';
 import Cards from '../components/Cards';
 
 const Home = () => {
@@ -68,10 +68,10 @@ const Home = () => {
   };
 
   return (
-    <div className='grid justify-items-center w-full' style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+    <div className='grid justify-items-center w-full' >
       {messages.length === 0 ? (
-        <div className='justify-center height-full'>
-          <div className='pb-10 flex justify-center logo'>
+        <div className='justify-center'>
+          <div className='pb-10 flex justify-center  logo'>
             <img src='./logo.png' alt='Logo' />
           </div>
           <Cards questions={questions} onCardClick={handleCardClick} />
@@ -94,9 +94,9 @@ const Home = () => {
         </div>
       )}
 
-      <div className='fixed bottom-4 w-full flex justify-center p-4'>
-        <div className='flexSearch items-center w-full max-w-xl space-x-4 p-3 bg-gray-100 rounded-full shadow'>
-          <i className='fa-solid fa-paperclip text-lg'></i>
+      <div className='fixed bottom-4 w-full max-w-lg flex justify-center p-4'>
+        <div className='flexSearch items-center w-full  bg-gray-100 rounded-full shadow'>
+          <i className='fa-solid fa-paperclip text-lg pe-2'></i>
           <input
             id='query'
             name='query'
@@ -105,9 +105,9 @@ const Home = () => {
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder='Message ChatGPT'
-            className='flex-grow bg-transparent border-0 focus:ring-0 outline-none'
+            className='flex-grow bg-transparent border-0 focus:ring-0 outline-none w-9'
           />
-          <div className='flex items-center justify-center w-10 h-10 bg-slate-500 rounded-full' onClick={handleSend}>
+          <div className='flex items-center justify-center px-3 w-9 h-9 bg-slate-500 rounded-full' onClick={handleSend}>
             <i className='fa-solid fa-arrow-up text-white'></i>
           </div>
         </div>

@@ -6,9 +6,8 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { BsStars } from "react-icons/bs";
-import '../style/Sidebar.css';
+import '../style/sidebar.css';
 import { useMediaQuery } from 'react-responsive';
-const { SubMenu } = Menu;
 
 const Sidebar = ({ setActivePage, activePage, setCollapsed, collapsed }) => {
   const location = useLocation();
@@ -33,7 +32,7 @@ const Sidebar = ({ setActivePage, activePage, setCollapsed, collapsed }) => {
         <div className='pt-5'>
           <Link to="/">
           <div className='sidebar-item flex mx-4 mb-8 p-1 rounded-lg hoverTab'>
-            <img src='./logo.png' style={{width:'18px'}} />
+            <img src='./logo.png' style={{width:'18px'}} alt="chatgpt logo" />
             <p className='ms-3 pt-2 text-start'>ChatGPT</p>
           </div>
           </Link>
@@ -60,7 +59,7 @@ const Sidebar = ({ setActivePage, activePage, setCollapsed, collapsed }) => {
         </div>
         <div className='mt-2'>
           <Link to='/' ><div className='sidebar-item flex mx-3 mb-7 p-2 rounded-lg hoverTab'>
-          <img src='./logo.png' style={{width:'18px'}} />
+          <img src='./logo.png' style={{width:'18px'}} alt="chatgpt mobile logo" />
             <p className='ms-3 pt-2 text-start'>ChatGPT</p>
           </div></Link>
           <Link to='/explore'><div className='sidebar-item flex mx-4 p-2 rounded-lg hoverTab'>

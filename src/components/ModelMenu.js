@@ -11,8 +11,8 @@ import FormLabel from '@mui/material/FormLabel';
 
 const ModelMenu = () => {
   return (
-    <div className="p-4">
-      <div className='sidebar-item flex flex-wrap items-center mx-1 my-2 rounded-lg hoverTab'>
+    <div className="p-0">
+      <div className='sidebar-item flex flex-wrap items-start mx-1 mt-2 mb-4 rounded-lg hoverTab'>
         <div className='rounded-full p-2'>
           <BsStars className='text-slate-500 text-lg' />
         </div>
@@ -27,7 +27,7 @@ const ModelMenu = () => {
         </div>
       </div>
 
-      <div className='sidebar-item flex flex-wrap items-center mx-2 my-2 rounded-lg hoverTab'>
+      <div className='sidebar-item flex flex-wrap items-start mx-2 my-2 rounded-lg hoverTab'>
         <div><GrTechnology className='text-slate-500 text-lg' /></div>
         <div className='text-start flex-1 ms-3'>
           <p className='mb-1 text-md font-semibold'>ChatGPT</p>
@@ -40,7 +40,7 @@ const ModelMenu = () => {
 
       <hr className='my-4'/>
 
-      <div className='sidebar-item flex flex-wrap items-center mx-2 p-2 my-2 rounded-lg hoverTab'>
+      <div className='sidebar-item flex flex-wrap items-center mx-2 my-2 rounded-lg hoverTab'>
         <MessageOutlined className='text-slate-500 text-lg' />
         <p className='ms-3 text-start flex-1 text-md'>Temporary chat</p>
         <div>

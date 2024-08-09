@@ -36,7 +36,7 @@
 
   
   /* Media query for small screens */
-  @media (max-width: 600px) {
+  @media (max-width: 200px) {
     .flex {
       flex-direction: column; /* Stack cards in a single column */
       align-items: center; /* Center cards horizontally */

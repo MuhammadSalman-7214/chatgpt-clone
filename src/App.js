@@ -70,43 +70,56 @@ const App = () => {
               collapsible
               collapsed={collapsed}
               className={`h-screen overflow-auto bg-slate-100 transition-all duration-200 ease-in-out`}
-              width={255}
+              width={250}
             >
               <Sidebar setActivePage={setActivePage} activePage={activePage} setCollapsed={setCollapsed} collapsed={collapsed} />
             </Sider>
           )
         )}
         <Layout className={`transition-all duration-200 flex-1 ${colorBgContainer}`}>
-          <Header className={`p-0 ${colorBgContainer}`}>
-            <div className="flex justify-between px-1">
-              {collapsed ? (
-                <div className="flex justify-between px-2 w-full">
-                  <div className="">
-                    <i className="fa-solid fa-table-columns p-2 text-slate-500 hoverTab rounded-lg text-lg" onClick={toggleSidebar}></i>
-                    <i className="fa-solid fa-pen-to-square p-2 text-slate-500 hoverTab rounded-lg text-lg"></i>
-                  </div>
-                  <div className="text-slate-500 hoverTab1 rounded-lg px-1 pt-5 text-lg" onClick={toggleModal}>
-                    ChatGPT <i className="fa-solid fa-angle-down text-slate-400"></i>
-                  </div>
-                  <div className="">
-                    <i className="fa-solid fa-arrow-up-from-bracket p-2 hoverTab1 rounded text-xl text-slate-500"></i>
-                    <i className="fa-solid fa-circle-user mx-2 text-3xl text-slate-500"></i>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex justify-between px-2 w-full">
-                  <div className="text-slate-500 hoverTab1 rounded-lg px-1" onClick={toggleModal}>
-                    ChatGPT <i className="fa-solid fa-angle-down text-slate-400"></i>
-                  </div>
-                  <div className="">
-                    <i className="fa-solid fa-arrow-up-from-bracket p-2 hoverTab1 rounded text-xl text-slate-500"></i>
-                    <i className="fa-solid fa-circle-user mx-2 text-3xl text-slate-500"></i>
-                  </div>
-                </div>
-              )}
-              
-            </div>
-          </Header>
+        <Header
+  className={`p-0 ${colorBgContainer} transition-all duration-200 ${
+    isSmallScreen ? 'ms-10' : 'ms-0'
+  }`}
+>
+  <div className="flex justify-between px-1">
+    {collapsed ? (
+      <div className="flex justify-between px-2 w-full">
+        <div>
+          <i
+            className="fa-solid fa-table-columns p-2 text-slate-500 hoverTab rounded-lg text-lg"
+            onClick={toggleSidebar}
+          ></i>
+          <i className="fa-solid fa-pen-to-square p-2 text-slate-500 hoverTab rounded-lg text-lg"></i>
+        </div>
+        <div
+          className="text-slate-500 hoverTab1 rounded-lg px-1 pt-5 text-lg"
+          onClick={toggleModal}
+        >
+          ChatGPT <i className="fa-solid fa-angle-down text-slate-400"></i>
+        </div>
+        <div>
+          <i className="fa-solid fa-arrow-up-from-bracket p-2 hoverTab1 rounded text-xl text-slate-500"></i>
+          <i className="fa-solid fa-circle-user mx-2 text-3xl text-slate-500"></i>
+        </div>
+      </div>
+    ) : (
+      <div className="flex justify-between px-2 w-full">
+        <div
+          className="text-slate-500 hoverTab1 rounded-lg px-1"
+          onClick={toggleModal}
+        >
+          ChatGPT <i className="fa-solid fa-angle-down text-slate-400"></i>
+        </div>
+        <div>
+          <i className="fa-solid fa-arrow-up-from-bracket p-2 hoverTab1 rounded text-xl text-slate-500"></i>
+          <i className="fa-solid fa-circle-user mx-2  text-3xl text-slate-500"></i>
+        </div>
+      </div>
+    )}
+  </div>
+</Header>
+
           <Content className={`p-5 ${colorBgContainer} relative`}>
             <Routes>
               <Route path="/" element={<Home />} />

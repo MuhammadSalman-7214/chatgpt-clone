@@ -196,6 +196,8 @@
     { "question": "What is the largest island in the Caribbean?", "answer": "Cuba is the largest island in the Caribbean." },
     { "question": "Who wrote 'The Road'?", "answer": "Cormac McCarthy wrote 'The Road'." },
     { "question": "What is the chemical symbol for osmium?", "answer": "The chemical symbol for osmium is Os." },
-    { "question": "What is the capital of Chile?", "answer": "The capital of Chile is Santiago." }
+    { "question": "What is the capital of Chile?", "answer": "The capital of Chile is Santiago." },
+    {"question": "Hi", "answer": "Hi, how can i help you today"}
+
   ]
   
