@@ -6,7 +6,6 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { BsStars } from "react-icons/bs";
-import '../style/sidebar.css';
 import { useMediaQuery } from 'react-responsive';
 
 const Sidebar = ({ setActivePage, activePage, setCollapsed, collapsed }) => {
@@ -31,7 +30,7 @@ const Sidebar = ({ setActivePage, activePage, setCollapsed, collapsed }) => {
         <>
         <div className='pt-5'>
           <Link to="/">
-          <div className='sidebar-item flex mx-4 mb-8 p-1 rounded-lg hoverTab'>
+          <div className='sidebar-item flex mx-4 mb-8 p-1 rounded-lg bg-inherit hover:bg-[#e4e3e3]'>
             <img src='./logo.png' style={{width:'18px'}} alt="chatgpt logo" />
             <p className='ms-3 pt-2 text-start'>ChatGPT</p>
           </div>
