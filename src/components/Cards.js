@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import '../style/cards.css';
+import '../style/genric-cards.css';
 
 const Cards = ({ questions, onCardClick }) => {
   const isSmallScreen = useMediaQuery({ maxWidth: 640 });
